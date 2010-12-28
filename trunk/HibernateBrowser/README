@@ -1,0 +1,11 @@
+This is a data browser for the popular Hibernate framework 
+http://www.hibernate.org/ that is used to persist Java objects. 
+
+It's NonPolymorphic because it displays objects under there 
+exact class instead of displaying objects that extend that class.
+
+This browser is needed because it makes it easy to browse 
+hibernate objects even if their data is stored in normal form 
+in the database.
+
+I hope someone will take this code and do something awesome.

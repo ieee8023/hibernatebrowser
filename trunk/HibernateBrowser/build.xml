@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Hibernate Browser" default="addDataAndDisplay" basedir=".">
+
+	<property name="lib" value="lib/"/>
+	<property name="src" value="src/"/>
+	<property name="bin" value="bin_ant/"/>
+	<property name="db" value="db"/>
+			
+	<path id="classpath">
+	  	<fileset dir="${lib}">
+			<include name="*.jar"/>
+	  	</fileset>
+	  	<pathelement location="${bin}"/>
+	</path>
+	
+	<target name="clean">
+		<delete dir="${bin}"/>
+		<delete dir="${db}"/>
+	</target>
+	
+	<target name="build">
+	 	<mkdir dir="${bin}"/>
+		<javac srcdir="${src}" destdir="${bin}" source="1.5" fork="true" optimize="true" target="1.5">
+			<classpath refid="classpath" />
+		</javac>
+	 	<copy todir="${bin}">
+	     	<fileset dir="${src}" casesensitive="yes">
+	     	  <include name="**/**.properties"/>
+	     	  <include name="**/**.xml"/>
+	     	</fileset>
+	 	</copy>
+	 	
+	</target>
+	
+	<target name="addData" depends="build">
+		<java classname="joecohen.hibernatedemo.AddData" fork="true">
+			<classpath refid="classpath"/>
+		</java>
+	</target>
+	
+	<target name="hibernateBrowser" depends="build">
+		<java classname="joecohen.hibernatebrowser.HibernateBrowserGUI" fork="true">
+			<classpath refid="classpath"/>
+		</java>
+	</target>
+	
+	<target name="addDataAndDisplay" depends="addData, hibernateBrowser"></target>
+	
+</project>
