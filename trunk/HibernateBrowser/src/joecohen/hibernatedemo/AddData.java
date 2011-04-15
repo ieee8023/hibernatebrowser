@@ -16,11 +16,15 @@
 
 package joecohen.hibernatedemo;
 
+import java.util.Date;
+
 import joecohen.hibernatedemo.pojos.Client;
 import joecohen.hibernatedemo.pojos.Matter;
 import joecohen.hibernatedemo.pojos.Noun;
 import joecohen.hibernatedemo.pojos.SubNoun;
 import joecohen.hibernatedemo.pojos.SubSubNoun;
+import joecohen.hibernatedemo.pojos.Task;
+import joecohen.hibernatedemo.pojos.Time;
 import joecohen.hibernatedemo.pojos.Verb;
 import joecohen.hibernatedemo.pojos.VerbNounRelation;
 
@@ -45,6 +49,19 @@ public class AddData {
 		vnr.setSubNoun(new SubNoun("A SubNoun"));
 		vnr.setSubSubNoun(new SubSubNoun("A SubSubNoun"));
 		session.save(vnr);
+		
+		
+		Time t1 = new Time(new Date(new Date().getTime() - 1000));
+		t1.setEndTime(new Date(new Date().getTime() + 1000));
+		session.save(t1);
+		
+		Time t2 = new Time(new Date(new Date().getTime() - 3000));
+		t2.setEndTime(new Date(new Date().getTime() + 3000));
+		session.save(t2);
+		
+		Time t3 = new Time(new Date(new Date().getTime() - 10000));
+		t3.setEndTime(new Date(new Date().getTime() + 10000));
+		session.save(t3);
 		
 		session.flush();
 		HibUtil.commitTransaction();
