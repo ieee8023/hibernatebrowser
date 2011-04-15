@@ -44,6 +44,6 @@
 		</java>
 	</target>
 	
-	<target name="addDataAndDisplay" depends="addData, hibernateBrowser"></target>
+	<target name="addDataAndDisplay" depends="clean, addData, hibernateBrowser"></target>
 	
 </project>

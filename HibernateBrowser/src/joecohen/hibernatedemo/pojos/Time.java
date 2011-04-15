@@ -24,6 +24,10 @@ import javax.persistence.*;
 @Inheritance(strategy= InheritanceType.JOINED)
 public class Time {
 
+	public Time() {
+		super();
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
